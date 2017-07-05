@@ -23,8 +23,8 @@ public class HomeModel {
     }
     public  class HomeChildModel {
         public String title;
-        public int mprice;
-        public List<Object> imgs;
+        public float mprice;
+        public List<String> imgs;
         public int type;
         public String unit;
         public int maxpacks;
@@ -32,9 +32,11 @@ public class HomeModel {
         public int quantity;
         public int id;
         public int remains;
-        public int price;
+        public float price;
         public int subcate;
         public String link;
+
+        public int buyCout;
 
     }
 

@@ -15,7 +15,7 @@ import a315i.youcai.Fragment.HomeFrament;
 import a315i.youcai.Fragment.MeFragment;
 import a315i.youcai.Fragment.ShopingFragment;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainActivity extends AppCompatActivity  implements View.OnClickListener {
     private List<ImageView> mImageViews;
     private int[] mImageSelectId = {
             R.mipmap.icon_home_hl,

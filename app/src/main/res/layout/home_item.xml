@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="100dp">
+
+    <ImageView
+        android:layout_width="120dp"
+        android:layout_height="80dp"
+        android:id="@+id/imageIcon"
+        android:src="@drawable/icon_choose_food"
+        android:padding="5dp"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/title"
+        android:text="餐桌无忧6斤装"
+        android:layout_toRightOf="@+id/imageIcon"
+        android:layout_marginTop="15dp"
+        android:textSize="16sp"
+        android:layout_marginLeft="12dp"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/specifications"
+        android:text="规格:3000/一斤"
+        android:layout_below="@+id/title"
+        android:layout_toRightOf="@+id/imageIcon"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="12dp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/price"
+        android:text="¥ 16.80"
+        android:textColor="#0db905"
+        android:layout_toRightOf="@+id/imageIcon"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="12dp"
+        android:layout_marginLeft="12dp"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/mprice"
+        android:text="¥ 16.80"
+        android:layout_toRightOf="@+id/price"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="12dp"
+        android:layout_marginLeft="12dp"
+        />
+
+    <ImageView
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:src="@drawable/icon_shop_cart_gray"
+        android:layout_alignParentRight="true"
+        android:layout_centerInParent="true"
+        android:layout_marginRight="12dp"
+        android:id="@+id/shoppingcar"
+        />
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerInParent="true"
+        android:layout_marginRight="12dp"
+        android:orientation="horizontal"
+        android:visibility="gone"
+        android:id="@+id/shopLayout"
+        >
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:src="@drawable/icon_sub"
+            android:id="@+id/subImage"
+            android:layout_marginRight="10dp"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1"
+            android:textSize="16sp"
+            android:layout_gravity="center"
+            android:id="@+id/buyCout"
+            />
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:src="@drawable/icon_add"
+            android:id="@+id/addImage"
+            android:layout_marginLeft="10dp"
+            />
+
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_alignParentBottom="true"
+        android:background="#3333"
+        />
+
+
+</RelativeLayout>
