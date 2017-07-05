@@ -1,7 +1,10 @@
 package a315i.youcai.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Paint;
+import android.os.Build;
+import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -13,6 +16,7 @@ import com.chad.library.adapter.base.BaseViewHolder;
 import com.chad.library.adapter.base.entity.SectionEntity;
 import com.squareup.picasso.Picasso;
 
+import java.io.Serializable;
 import java.lang.reflect.Modifier;
 import java.util.List;
 
@@ -27,15 +31,15 @@ import a315i.youcai.Tools.LogTools;
 public class HomeRecycerViewAdapter extends BaseSectionQuickAdapter<HomeRecycerViewAdapter.MySection,BaseViewHolder> {
 
     private Context mContex;
-    private List mData;
+
 
 //    public HomeRecycerViewAdapter(List<HomeModel.HomeChildModel> itemList,Context context){
 //        super(R.layout.home_item,itemList);
 //        this.mContex = context;
 //    }
-  public HomeRecycerViewAdapter(int layoutResId, int sectionHeadResId, List data) {
+  public HomeRecycerViewAdapter(int layoutResId, int sectionHeadResId, List data,Context context) {
     super(layoutResId, sectionHeadResId, data);
-      this.mData = data;
+      this.mContex = context;
   }
     @Override
     protected void convertHead(BaseViewHolder helper, MySection item) {
@@ -73,6 +77,12 @@ public class HomeRecycerViewAdapter extends BaseSectionQuickAdapter<HomeRecycerV
                        shopLayout.setVisibility(View.GONE);
                    }
                    notifyDataSetChanged();
+                   Intent intent = new Intent();
+                   intent.setAction("shoppingCountSub");
+//                   Bundle bundle = new Bundle();
+//                   bundle.putSerializable("model", (Serializable) model);
+//                   intent.putExtras(bundle);
+                   mContex.sendBroadcast(intent);
                }
            });
            addImage.setOnClickListener(new View.OnClickListener() {
@@ -80,6 +90,13 @@ public class HomeRecycerViewAdapter extends BaseSectionQuickAdapter<HomeRecycerV
                public void onClick(View v) {
                    model.buyCout++;
                    notifyDataSetChanged();
+                   Intent intent = new Intent();
+                 intent.setAction("shoppingCountAdd");
+//                   Bundle bundle = new Bundle();
+//                   bundle.putSerializable("model", (Serializable) model);
+//                   intent.putExtras(bundle);
+                   mContex.sendBroadcast(intent);
+
                }
            });
 
@@ -96,6 +113,12 @@ public class HomeRecycerViewAdapter extends BaseSectionQuickAdapter<HomeRecycerV
                public void onClick(View v) {
                    model.buyCout = 1;
                    notifyDataSetChanged();
+                   Intent intent = new Intent();
+                  intent.setAction("shoppingCountAdd");
+//                   Bundle bundle = new Bundle();
+//                   bundle.putSerializable("model", (Serializable) model);
+//                   intent.putExtras(bundle);
+                   mContex.sendBroadcast(intent);
                }
            });
            title.setText(model.title);

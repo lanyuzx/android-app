@@ -1,6 +1,7 @@
 package a315i.youcai.Model.Home;
 
 
+import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
 
@@ -21,7 +22,7 @@ public class HomeModel {
         public String img;
         public Map<String,Integer> link;
     }
-    public  class HomeChildModel {
+    public  class HomeChildModel implements Serializable {
         public String title;
         public float mprice;
         public List<String> imgs;

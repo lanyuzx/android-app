@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    >
+    <com.youth.banner.Banner
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
+        android:id="@+id/detailHeaderBr"
+        android:background="@color/colorAccent"
+        >
+    </com.youth.banner.Banner>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="晶晒米2KG"
+        android:textColor="#5e5e5e"
+        android:layout_marginTop="25dp"
+        android:layout_marginLeft="25dp"
+        android:id="@+id/detailHeaderTitle"
+        android:textSize="16dp"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="清热解毒 ,没眼眼福"
+        android:textColor="#555555"
+        android:layout_marginTop="25dp"
+        android:layout_marginLeft="25dp"
+        android:id="@+id/detailHeaderContent"
+        android:textSize="18sp"
+        />
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="¥ 16.60"
+            android:textColor="#349b32"
+            android:layout_marginTop="25dp"
+            android:layout_marginLeft="25dp"
+            android:id="@+id/detailHeaderPrice"
+            android:textSize="19sp"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="¥ 100"
+            android:textColor="#8f8f8f"
+            android:layout_marginTop="25dp"
+            android:layout_marginLeft="25dp"
+            android:id="@+id/detailHeadermPrice"
+            android:textSize="19sp"
+            android:layout_toRightOf="@+id/detailHeaderPrice"
+            android:visibility="gone"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="¥ 100"
+            android:textColor="#8f8f8f"
+            android:layout_marginTop="25dp"
+            android:layout_marginLeft="25dp"
+            android:id="@+id/detailHeaderunit"
+            android:textSize="19sp"
+            android:layout_toRightOf="@+id/detailHeadermPrice"
+            />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_below="@+id/detailHeaderunit"
+            android:background="#8f8f8f"
+            />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#8f8f8f"
+        />
+
+</LinearLayout>

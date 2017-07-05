@@ -1,9 +1,14 @@
 package a315i.youcai;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,6 +19,7 @@ import a315i.youcai.Fragment.CycleFragment;
 import a315i.youcai.Fragment.HomeFrament;
 import a315i.youcai.Fragment.MeFragment;
 import a315i.youcai.Fragment.ShopingFragment;
+import a315i.youcai.Model.Home.HomeModel;
 
 public class MainActivity extends AppCompatActivity  implements View.OnClickListener {
     private List<ImageView> mImageViews;
@@ -32,13 +38,47 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
             R.mipmap.icon_mine_normal
     };
     private List<MainFragment> mFragments;
+    public TextView mShopCountTextView;
+    public Context mContex;
+    private int mBuyCount;
+    private List<HomeModel.HomeChildModel> modelList;
+    private BroadcastReceiver mReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            String action = intent.getAction();
+            if (action.equals("shoppingCountAdd")){
+
+                mBuyCount++;
+                mShopCountTextView.setVisibility(View.VISIBLE);
+                mShopCountTextView.setText("" + mBuyCount);
+            }else if (action.equals("shoppingCountSub")){
+                mBuyCount--;
+                if (mBuyCount == 0){
+                    mBuyCount = 0;
+                    mShopCountTextView.setVisibility(View.GONE);
+                }else {
+                    mShopCountTextView.setVisibility(View.VISIBLE);
+                    mShopCountTextView.setText("" + mBuyCount);
+                }
+            }
+
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        //注册一个广播
+        IntentFilter intentFilter = new IntentFilter();
+        intentFilter.addAction("shoppingCountSub");
+        intentFilter.addAction("shoppingCountAdd");
+        registerReceiver(mReceiver,intentFilter);
+
         mImageViews = new ArrayList<>();
         mFragments = new ArrayList<>();
+        modelList = new ArrayList<>();
+        mShopCountTextView = (TextView) findViewById(R.id.shopCount);
         ImageView mHomeImage = (ImageView) findViewById(R.id.home);
         mHomeImage.setOnClickListener(this);
         ImageView mCyclerImage = (ImageView) findViewById(R.id.cycler);
@@ -74,6 +114,12 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
                 .hide(mFragments.get(3))
                 .hide(mFragments.get(4))
                 .commit();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        unregisterReceiver(mReceiver);
     }
 
     @Override

@@ -1,11 +1,13 @@
 package a315i.youcai.Fragment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
 
+import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.squareup.picasso.Picasso;
 import com.youth.banner.Banner;
 import com.youth.banner.loader.ImageLoader;
@@ -16,6 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import a315i.youcai.Adapter.HomeRecycerViewAdapter;
+import a315i.youcai.BaseClass.MainDetailActivity;
 import a315i.youcai.BaseClass.MainFragment;
 import a315i.youcai.Model.Home.HomeModel;
 import a315i.youcai.R;
@@ -31,6 +34,9 @@ import a315i.youcai.Tools.ToastTools;
 public class HomeFrament extends MainFragment {
     private RecyclerView mRecyclerView;
     private HomeRecycerViewAdapter mRecycerViewAdapter;
+    private List<HomeModel.HomeChildModel> tops;
+    private  List<HomeModel.HomeChildModel> items;
+    private  List<HomeModel.HomeChildModel> entries;
 
 
     @Override
@@ -42,14 +48,15 @@ public class HomeFrament extends MainFragment {
             public void onResponse(String response) {
                 LogTools.i(response);
                HomeModel model =   GsonTools.parseJsonWithGson(response, HomeModel.class);
-                List<HomeModel.HomeChildModel> items = model.items;
-                List<HomeModel.HomeChildModel> tops = model.tops;
-                List<HomeModel.HomeChildModel> entries = model.entries;
+                items = model.items;
+                tops = model.tops;
+                entries = model.entries;
                 List<HomeModel.slidesModel> slidesModels = model.slides;
                 ToastTools.showLong(getActivity(),"请求成功");
-                mRecycerViewAdapter = new HomeRecycerViewAdapter(R.layout.home_item,R.layout.home_header_item,getSampleData(model));
+                mRecycerViewAdapter = new HomeRecycerViewAdapter(R.layout.home_item,R.layout.home_header_item,getSampleData(model),getActivity());
                 mRecyclerView.setAdapter(mRecycerViewAdapter);
                 setupHeaderView(slidesModels);
+                setupDetailItemClick();
 
             }
             @Override
@@ -87,7 +94,31 @@ public class HomeFrament extends MainFragment {
 
 
     }
+    private  void setupDetailItemClick(){
+        mRecycerViewAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+                ToastTools.showShort(getActivity(),""+position);
+                int index = 0;
+                if (position == 1){ //
+                    index = 0;
+                    Intent intent = new Intent(getActivity(), MainDetailActivity.class);
+                    HomeModel.HomeChildModel model = items.get(index);
+                    String detailUrl = "https://api.youcai.xin/item/detail?id="+ model.id;
+                    intent.putExtra("detailUrl",detailUrl);
+                    startActivity(intent);
+                }else if (position >=3){
+                    index = position -3;
+                    Intent intent = new Intent(getActivity(), MainDetailActivity.class);
+                    HomeModel.HomeChildModel model = tops.get(index);
+                    String detailUrl = "https://api.youcai.xin/item/detail?id="+ model.id;
+                    intent.putExtra("detailUrl",detailUrl);
+                    startActivity(intent);
 
+                }
+            }
+        });
+    }
     private List<HomeRecycerViewAdapter.MySection> getSampleData(HomeModel model){
 
         List<HomeRecycerViewAdapter.MySection> list = new ArrayList<>();
