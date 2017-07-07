@@ -1,4 +1,4 @@
-package a315i.youcai.BaseClass;
+package a315i.youcai.Activity;
 
 import android.content.Context;
 import android.content.Intent;

@@ -6,6 +6,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.squareup.picasso.Picasso;
@@ -17,8 +18,9 @@ import org.xutils.http.RequestParams;
 import java.util.ArrayList;
 import java.util.List;
 
+import a315i.youcai.Activity.ProductActivity;
 import a315i.youcai.Adapter.HomeRecycerViewAdapter;
-import a315i.youcai.BaseClass.MainDetailActivity;
+import a315i.youcai.Activity.MainDetailActivity;
 import a315i.youcai.BaseClass.MainFragment;
 import a315i.youcai.Model.Home.HomeModel;
 import a315i.youcai.R;
@@ -31,7 +33,7 @@ import a315i.youcai.Tools.ToastTools;
  * Created by zhouzunxian on 2017/7/3.
  */
 
-public class HomeFrament extends MainFragment {
+public class HomeFrament extends MainFragment  implements View.OnClickListener{
     private RecyclerView mRecyclerView;
     private HomeRecycerViewAdapter mRecycerViewAdapter;
     private List<HomeModel.HomeChildModel> tops;
@@ -39,8 +41,10 @@ public class HomeFrament extends MainFragment {
     private  List<HomeModel.HomeChildModel> entries;
 
 
+
     @Override
     public void setupData() {
+
         RequestParams params = new RequestParams("https://api.youcai.xin/app/home");
 
         NetWorkTools.request(NetWorkTools.requestType.GET, params, new NetWorkTools.CallBack() {
@@ -71,6 +75,7 @@ public class HomeFrament extends MainFragment {
     @Override
     public View setupView() {
         View homeView = View.inflate(getActivity(), R.layout.fragment_home,null);
+
         mRecyclerView = (RecyclerView) homeView.findViewById(R.id.homeRecyclerView);
         LinearLayoutManager manager = new LinearLayoutManager(getActivity());
         mRecyclerView.setLayoutManager(manager);
@@ -81,6 +86,15 @@ public class HomeFrament extends MainFragment {
     private void setupHeaderView(List<HomeModel.slidesModel> slides){
 
         View headerView = View.inflate(getActivity(),R.layout.home_recycerview_header,null);
+        headerView.findViewById(R.id.vegetables).setOnClickListener(this);
+        headerView.findViewById(R.id.meat_egg).setOnClickListener(this);
+        headerView.findViewById(R.id.grain_oil).setOnClickListener(this);
+        headerView.findViewById(R.id.icon_baby).setOnClickListener(this);
+        headerView.findViewById(R.id.choose_food).setOnClickListener(this);
+        headerView.findViewById(R.id.coupons).setOnClickListener(this);
+        headerView.findViewById(R.id.exchange).setOnClickListener(this);
+        headerView.findViewById(R.id.recharge).setOnClickListener(this);
+
         Banner banner = (Banner) headerView.findViewById(R.id.banner);
         List<String> paths = new ArrayList();
         for (HomeModel.slidesModel model : slides){
@@ -131,6 +145,40 @@ public class HomeFrament extends MainFragment {
             list.add(new HomeRecycerViewAdapter.MySection(model.tops.get(i)));
         }
         return list;
+
+    }
+
+    @Override
+    public void onClick(View v) {
+        int index = 0;
+        Intent intent = new Intent(getContext(), ProductActivity.class);
+        switch (v.getId()){
+            case R.id.vegetables:
+                index = 0;
+                break;
+            case R.id.meat_egg:
+                index = 1;
+                break;
+            case R.id.grain_oil:
+                index = 2;
+                break;
+            case R.id.icon_baby:
+                index = 3;
+                break;
+            case R.id.choose_food:
+                index = 4;
+                break;
+            case R.id.coupons:
+                index = 5;
+                break;
+            case R.id.exchange:
+                index = 6;
+                break;
+            case R.id.recharge:
+                index = 7;
+                break;
+        }
+        startActivity(intent);
 
     }
 
