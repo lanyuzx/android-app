@@ -1,6 +1,7 @@
 package a315i.youcai.Model.Home.Detai;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by zhouzunxian on 2017/7/5.
@@ -8,14 +9,13 @@ import java.util.List;
 
 public class DetailModel {
 
-    public List<detailItem> item;
+    public Object item;
     public List<detailComments> comments;
 
     public class detailItem{
         public String title;
-        public String channel;
         public String descr;
-        public String mprice;
+        public int mprice;
         public String farm;
         public List<String> imgs;
         public String thumb;
@@ -30,18 +30,22 @@ public class DetailModel {
         public int cmntcnt;
         public int fid;
         public int freight;
-        public List<String> detail;
+        public Object detail;
         public int quantity;
         public int id;
         public int remains;
-        public int tags;
+        public Object tags;
         public int price;
         public int subcate;
         public String payset;
-        public List<Integer> wids;
-        public List<String> more;
+        public Object wids;
+        public Object more;
 
 
+    }
+    public class detail {
+        public List<String> imgs;
+        public String content;
     }
     public class  detailComments{
         public int type;
@@ -50,13 +54,14 @@ public class DetailModel {
         public int target;
         public int uid;
         public int id;
-        public int orderno;
+        public String orderno;
         public List<String> imgs;
-        public int modified;
+        public String modified;
+        public String created;
         public int rating;
         public String title;
-        public int nickname;
-        public int headimg;
+        public String nickname;
+        public String headimg;
 
     }
 

@@ -33,9 +33,53 @@
   <android.support.v7.widget.RecyclerView
       android:layout_width="match_parent"
       android:layout_height="match_parent"
+      android:layout_weight="1"
       android:id="@+id/detailRv"
       >
   </android.support.v7.widget.RecyclerView>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        >
+        <ImageView
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_weight="1"
+            android:src="@drawable/icon_shop_cart_red"
+            android:layout_gravity="center"
+            />
+        <View
+            android:layout_width="2dp"
+            android:layout_height="match_parent"
+            android:background="#e5e5e5"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            android:text="加入购物车"
+            android:textColor="#c06344"
+            android:textSize="18sp"
+            android:gravity="center"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            android:text="立即购买"
+            android:background="#f46044"
+            android:gravity="center"
+            android:textColor="#fff"
+
+            android:textSize="18sp"
+            />
+
+    </LinearLayout>
 
 </LinearLayout>

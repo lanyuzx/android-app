@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="商品信息"
+            android:textSize="16sp"
+            android:layout_centerInParent="true"
+            android:id="@+id/productInfoTv"
+            />
+        <View
+            android:layout_width="50dp"
+            android:layout_height="1dp"
+            android:background="#8f8f8f"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="80dp"
+
+            />
+        <View
+            android:layout_width="50dp"
+            android:layout_height="1dp"
+            android:background="#8f8f8f"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="80dp"
+            android:layout_alignParentRight="true"
+
+            />
+
+    </RelativeLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="12dp"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/contentTv"
+            android:text="保存方法"
+            android:textColor="#010101"
+            android:layout_marginLeft="20dp"
+            android:textSize="14dp"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/contentinfoTv"
+            android:text="请值冰箱中保存"
+            android:textColor="#989898"
+            android:layout_marginLeft="5dp"
+            android:textSize="14dp"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/saveTv"
+            android:text="保存方法"
+            android:textColor="#010101"
+            android:layout_marginLeft="20dp"
+            android:textSize="14dp"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/saveinfoTv"
+            android:text="请值冰箱中保存"
+            android:textColor="#989898"
+            android:layout_marginLeft="5dp"
+            />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="5dp"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/ShelfLifeTv"
+            android:text="保存方法"
+            android:textColor="#010101"
+            android:layout_marginLeft="20dp"
+            android:textSize="14dp"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/ShelfLifeInfoTv"
+            android:text="请值冰箱中保存"
+            android:textColor="#989898"
+            android:layout_marginLeft="5dp"
+            />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="5dp"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/promptTv"
+            android:text="保存方法"
+            android:textColor="#010101"
+            android:layout_marginLeft="20dp"
+            android:textSize="14dp"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/promptInfoTv"
+            android:text="请值冰箱中保存"
+            android:textColor="#989898"
+            android:layout_marginLeft="5dp"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="5dp"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tuiJianTv"
+            android:text="保存方法"
+            android:textColor="#010101"
+            android:layout_marginLeft="20dp"
+            android:textSize="14dp"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tuiJianInfoTv"
+            android:text="请值冰箱中保存"
+            android:textColor="#989898"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="20dp"
+            />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.6dp"
+        android:background="#8f8f8f"
+        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp"
+        >
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/icon_wx"
+            android:layout_gravity="center"
+            android:layout_marginLeft="20dp"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="20dp"
+            android:text="有菜客服微信号:youcai0099(点击复制),有任何问题,欢迎随时联系,朋友圈常常会有福利哦 ~"
+            />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="#8f8f8f"
+        android:layout_marginTop="20dp"
+        />
+
+</LinearLayout>
