@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.google.gson.Gson;
 import com.squareup.picasso.Picasso;
 import com.youth.banner.Banner;
 import com.youth.banner.loader.ImageLoader;
@@ -38,7 +39,7 @@ public class HomeFrament extends MainFragment  implements View.OnClickListener{
     private HomeRecycerViewAdapter mRecycerViewAdapter;
     private List<HomeModel.HomeChildModel> tops;
     private  List<HomeModel.HomeChildModel> items;
-    private  List<HomeModel.HomeChildModel> entries;
+    private  List<HomeModel.entriesModel> entries;
 
 
 
@@ -151,7 +152,6 @@ public class HomeFrament extends MainFragment  implements View.OnClickListener{
     @Override
     public void onClick(View v) {
         int index = 0;
-        Intent intent = new Intent(getContext(), ProductActivity.class);
         switch (v.getId()){
             case R.id.vegetables:
                 index = 0;
@@ -178,7 +178,22 @@ public class HomeFrament extends MainFragment  implements View.OnClickListener{
                 index = 7;
                 break;
         }
+        setupProductActivity(index);
+
+
+    }
+    private void setupProductActivity(int index){
+        HomeModel.entriesModel intem =  entries.get(index);
+//        Gson gson = new Gson();
+//        HomeModel.slidesModel entriesModel = GsonTools.parseJsonWithGson(gson.toJson(intem),HomeModel.slidesModel.class);
+
+        Intent intent = new Intent(getContext(), ProductActivity.class);
+        intent.putExtra("","");
+        intent.putExtra("title","");
         startActivity(intent);
+
+
+
 
     }
 

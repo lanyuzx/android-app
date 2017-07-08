@@ -12,7 +12,7 @@ import java.util.Map;
 public class HomeModel {
     public List<HomeChildModel> items;
     public List<HomeChildModel> tops;
-    public List<HomeChildModel> entries;
+    public List<entriesModel> entries;
     public List<slidesModel> slides;
 
 
@@ -39,6 +39,11 @@ public class HomeModel {
 
         public int buyCout;
 
+    }
+    public class entriesModel {
+        public String link;
+        public String icon;
+        public String title;
     }
 
 }
