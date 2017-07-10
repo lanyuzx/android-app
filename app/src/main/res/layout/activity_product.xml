@@ -19,15 +19,15 @@
             android:id="@+id/product_backIv"
             />
        <RelativeLayout
-           android:layout_width="220dp"
+           android:layout_width="250dp"
            android:layout_height="40dp"
            android:layout_centerInParent="true"
            android:background="@drawable/product_search"
            android:alpha="0.8"
            >
            <ImageView
-               android:layout_width="wrap_content"
-               android:layout_height="35dp"
+               android:layout_width="15dp"
+               android:layout_height="15dp"
                android:src="@drawable/icon_fang"
                android:layout_centerVertical="true"
                android:layout_marginLeft="5dp"
@@ -40,12 +40,14 @@
                android:layout_marginLeft="5dp"
                android:layout_centerVertical="true"
                android:hint="请输入关键字"
+
+
                android:background="@null"
                android:id="@+id/product_search_Et"
                />
            <ImageView
-               android:layout_width="20dp"
-               android:layout_height="20dp"
+               android:layout_width="15dp"
+               android:layout_height="15dp"
                android:src="@drawable/icon_x"
                android:layout_centerVertical="true"
                android:layout_alignParentRight="true"
@@ -56,8 +58,8 @@
        </RelativeLayout>
 
         <ImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
             android:src="@drawable/icon_kuai"
             android:layout_centerVertical="true"
             android:layout_alignParentRight="true"
@@ -68,12 +70,23 @@
 
     </RelativeLayout>
 
-    <android.support.v7.widget.RecyclerView
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/product_RV"
-        >
+        android:layout_height="match_parent">
+        <android.support.v7.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/productLiena_RV"
+            >
+        </android.support.v7.widget.RecyclerView>
+        <android.support.v7.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/productGrid_RV"
+            >
+        </android.support.v7.widget.RecyclerView>
+    </RelativeLayout>
 
-    </android.support.v7.widget.RecyclerView>
+
 
 </LinearLayout>

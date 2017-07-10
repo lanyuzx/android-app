@@ -186,10 +186,16 @@ public class HomeFrament extends MainFragment  implements View.OnClickListener{
         HomeModel.entriesModel intem =  entries.get(index);
 //        Gson gson = new Gson();
 //        HomeModel.slidesModel entriesModel = GsonTools.parseJsonWithGson(gson.toJson(intem),HomeModel.slidesModel.class);
-
+        String url = "";
+        if (intem.link !=null){
+            url = "https://api.youcai.xin/item/list?cate=" + (index +1) + "&length=10&start=0";
+            if (index == 3){
+                url = "https://api.youcai.xin/item/list?tags=" + (index ) + "&length=10&start=0";
+            }
+        }
         Intent intent = new Intent(getContext(), ProductActivity.class);
-        intent.putExtra("","");
-        intent.putExtra("title","");
+        intent.putExtra("prdouctUrl",url);
+        intent.putExtra("title",intem.title);
         startActivity(intent);
 
 
