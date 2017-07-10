@@ -30,6 +30,7 @@ dependencies {
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.22'
     compile 'com.android.support:recyclerview-v7:24.1.1'
+    compile 'com.android.support:design:26.0.0-alpha1'
     compile 'org.xutils:xutils:3.5.0'
     compile 'com.google.code.gson:gson:2.2.4'
     compile 'com.youth.banner:banner:1.4.9'

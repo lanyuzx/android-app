@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="a315i.youcai.Activity.LoginActivity"
+    android:orientation="vertical">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="49dp"
+        >
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:src="@drawable/icon_back"
+            android:layout_marginLeft="12dp"
+            android:layout_centerVertical="true"
+            android:id="@+id/login_backIv"
+            android:layout_marginTop="12dp"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="登录"
+            android:layout_centerInParent="true"
+            android:textSize="18sp"
+            android:textColor="#585858"
+            />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.1dp"
+            android:layout_alignParentBottom="true"
+            android:background="#585858"
+            />
+
+    </RelativeLayout>
+><android.support.design.widget.TabLayout
+    android:layout_width="match_parent"
+    android:layout_height="45dp"
+    android:id="@+id/login_tabLaout"
+    app:tabTextColor="#585858"
+    app:tabSelectedTextColor="#349b32"
+    app:tabIndicatorColor="#349b32"
+    >
+
+</android.support.design.widget.TabLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.1dp"
+        android:background="#585858"
+        />
+
+    <android.support.v4.view.ViewPager
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/login_viewPager"
+        >
+
+    </android.support.v4.view.ViewPager>
+
+
+
+</LinearLayout>

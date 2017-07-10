@@ -21,11 +21,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".Activity.MainDetailActivity" />
-        <activity android:name=".Activity.ProductActivity"
-            android:windowSoftInputMode="stateHidden"
-            >
-
-        </activity>
+        <activity
+            android:name=".Activity.ProductActivity"
+            android:windowSoftInputMode="stateHidden"></activity>
+        <activity android:name=".Activity.LoginActivity"></activity>
     </application>
 
 </manifest>

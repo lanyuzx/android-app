@@ -1,13 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <TextView
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+   <RelativeLayout
+       android:layout_width="match_parent"
+       android:layout_height="49dp"
+       >
+       <TextView
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_centerInParent="true"
+           android:text="周期配"
+           android:textColor="#585858"
+           android:textSize="18sp"
+           />
+   </RelativeLayout>
+    <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="周期购"
-        android:gravity="center"
-        android:textColor="@color/colorPrimary"
-        android:textSize="22sp"
-        />
+        android:id="@+id/cycle_Rv"
+        >
+
+    </android.support.v7.widget.RecyclerView>
 </LinearLayout>

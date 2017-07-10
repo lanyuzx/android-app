@@ -19,6 +19,7 @@ import org.xutils.http.RequestParams;
 import java.util.ArrayList;
 import java.util.List;
 
+import a315i.youcai.Activity.LoginActivity;
 import a315i.youcai.Activity.ProductActivity;
 import a315i.youcai.Adapter.HomeRecycerViewAdapter;
 import a315i.youcai.Activity.MainDetailActivity;
@@ -183,6 +184,11 @@ public class HomeFrament extends MainFragment  implements View.OnClickListener{
 
     }
     private void setupProductActivity(int index){
+        if (index == 4||index == 5||index == 6||index == 7 ){
+            Intent intent = new Intent(getContext(), LoginActivity.class);
+            startActivity(intent);
+            return;
+        }
         HomeModel.entriesModel intem =  entries.get(index);
 //        Gson gson = new Gson();
 //        HomeModel.slidesModel entriesModel = GsonTools.parseJsonWithGson(gson.toJson(intem),HomeModel.slidesModel.class);
