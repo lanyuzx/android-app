@@ -23,7 +23,7 @@ public class LoginActivity extends AppCompatActivity {
         mTabLayout.addTab(mTabLayout.newTab().setText("密码登录"));
         mTabLayout.addTab(mTabLayout.newTab().setText("短信登录"));
         mViewPager = (ViewPager) findViewById(R.id.login_viewPager);
-        mViewPager.setAdapter(new setupViewPage());
+       // mViewPager.setAdapter(new setupViewPage());
         findViewById(R.id.login_backIv).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
