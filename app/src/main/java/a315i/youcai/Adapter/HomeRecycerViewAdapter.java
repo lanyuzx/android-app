@@ -16,12 +16,15 @@ import com.chad.library.adapter.base.BaseViewHolder;
 import com.chad.library.adapter.base.entity.SectionEntity;
 import com.squareup.picasso.Picasso;
 
+import org.xutils.ex.DbException;
+
 import java.io.Serializable;
 import java.lang.reflect.Modifier;
 import java.util.List;
 
 import a315i.youcai.Model.Home.HomeModel;
 import a315i.youcai.R;
+import a315i.youcai.Tools.DataBaseTools;
 import a315i.youcai.Tools.LogTools;
 
 /**
@@ -71,10 +74,16 @@ public class HomeRecycerViewAdapter extends BaseSectionQuickAdapter<HomeRecycerV
                public void onClick(View v) {
                    model.buyCout--;
 
+                       DataBaseTools.getInstance(mContext).update(model);
+
+
                    if (model.buyCout == 0) {
                        model.buyCout = 0;
                        shopImageView.setVisibility(View.VISIBLE);
                        shopLayout.setVisibility(View.GONE);
+
+                           DataBaseTools.getInstance(mContext).delete(model);
+
                    }
                    notifyDataSetChanged();
                    Intent intent = new Intent();
@@ -97,6 +106,9 @@ public class HomeRecycerViewAdapter extends BaseSectionQuickAdapter<HomeRecycerV
 //                   intent.putExtras(bundle);
                    mContex.sendBroadcast(intent);
 
+                   DataBaseTools.getInstance(mContext).update(model);
+
+
                }
            });
 
@@ -112,6 +124,8 @@ public class HomeRecycerViewAdapter extends BaseSectionQuickAdapter<HomeRecycerV
                @Override
                public void onClick(View v) {
                    model.buyCout = 1;
+
+                   DataBaseTools.getInstance(mContext).save(model);
                    notifyDataSetChanged();
                    Intent intent = new Intent();
                   intent.setAction("shoppingCountAdd");

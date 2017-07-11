@@ -10,6 +10,8 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import org.xutils.ex.DbException;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,6 +22,8 @@ import a315i.youcai.Fragment.HomeFrament;
 import a315i.youcai.Fragment.MeFragment;
 import a315i.youcai.Fragment.ShopingFragment;
 import a315i.youcai.Model.Home.HomeModel;
+import a315i.youcai.Tools.DataBaseTools;
+import a315i.youcai.Tools.LogTools;
 
 public class MainActivity extends AppCompatActivity  implements View.OnClickListener {
     private List<ImageView> mImageViews;
@@ -114,6 +118,16 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
                 .hide(mFragments.get(3))
                 .hide(mFragments.get(4))
                 .commit();
+
+
+            List<HomeModel.HomeChildModel> modelList = DataBaseTools.getInstance(getApplicationContext()).findAll();
+            int buyCount = 0;
+            for (HomeModel.HomeChildModel model:modelList){
+                buyCount += model.buyCout;
+            }
+            LogTools.e("" + buyCount);
+
+
     }
 
     @Override

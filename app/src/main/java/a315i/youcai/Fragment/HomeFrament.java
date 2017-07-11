@@ -109,6 +109,8 @@ public class HomeFrament extends MainFragment  implements View.OnClickListener{
         mRecycerViewAdapter.addHeaderView(headerView);
 
 
+
+
     }
     private  void setupDetailItemClick(){
         mRecycerViewAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
