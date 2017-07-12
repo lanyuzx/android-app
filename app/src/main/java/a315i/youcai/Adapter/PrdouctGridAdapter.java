@@ -16,6 +16,7 @@ import java.util.List;
 
 import a315i.youcai.Model.Home.HomeModel;
 import a315i.youcai.R;
+import a315i.youcai.Tools.DataBaseTools;
 
 /**
  * Created by zhouzunxian on 2017/7/10.
@@ -73,6 +74,9 @@ public class PrdouctGridAdapter extends BaseQuickAdapter<HomeModel.HomeChildMode
                     item.buyCout = 0;
                     shopImageView.setVisibility(View.VISIBLE);
                     shopLayout.setVisibility(View.GONE);
+                    DataBaseTools.getInstance(mContext).delete(item);
+                }else {
+                    DataBaseTools.getInstance(mContext).save(item);
                 }
                 notifyDataSetChanged();
                 Intent intent = new Intent();
@@ -85,6 +89,7 @@ public class PrdouctGridAdapter extends BaseQuickAdapter<HomeModel.HomeChildMode
             public void onClick(View v) {
                 item.buyCout++;
                 notifyDataSetChanged();
+                DataBaseTools.getInstance(mContext).save(item);
                 Intent intent = new Intent();
                 intent.setAction("shoppingCountAdd");
 //                   Bundle bundle = new Bundle();
@@ -98,6 +103,7 @@ public class PrdouctGridAdapter extends BaseQuickAdapter<HomeModel.HomeChildMode
             @Override
             public void onClick(View v) {
                 item.buyCout = 1;
+                DataBaseTools.getInstance(mContext).save(item);
                 notifyDataSetChanged();
                 Intent intent = new Intent();
                 intent.setAction("shoppingCountAdd");

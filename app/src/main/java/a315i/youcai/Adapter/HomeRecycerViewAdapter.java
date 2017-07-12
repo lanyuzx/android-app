@@ -74,16 +74,15 @@ public class HomeRecycerViewAdapter extends BaseSectionQuickAdapter<HomeRecycerV
                public void onClick(View v) {
                    model.buyCout--;
 
-                       DataBaseTools.getInstance(mContext).update(model);
-
-
                    if (model.buyCout == 0) {
                        model.buyCout = 0;
                        shopImageView.setVisibility(View.VISIBLE);
                        shopLayout.setVisibility(View.GONE);
 
-                           DataBaseTools.getInstance(mContext).delete(model);
+                       DataBaseTools.getInstance(mContext).delete(model);
 
+                   }else {
+                       DataBaseTools.getInstance(mContext).save(model);
                    }
                    notifyDataSetChanged();
                    Intent intent = new Intent();
@@ -106,7 +105,7 @@ public class HomeRecycerViewAdapter extends BaseSectionQuickAdapter<HomeRecycerV
 //                   intent.putExtras(bundle);
                    mContex.sendBroadcast(intent);
 
-                   DataBaseTools.getInstance(mContext).update(model);
+                   DataBaseTools.getInstance(mContext).save(model);
 
 
                }

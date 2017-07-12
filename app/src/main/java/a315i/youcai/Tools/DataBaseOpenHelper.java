@@ -16,7 +16,7 @@ public class DataBaseOpenHelper extends SQLiteOpenHelper {
     }
     public static final String youcai_Table = "create table youcai_Table ("
 
-            + "id integer primary key autoincrement, "
+            + "_id integer primary key autoincrement, "
             + "title text, "
             + "mprice integer, "
             + "imgs text, "

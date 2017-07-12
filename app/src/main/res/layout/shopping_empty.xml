@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/icon_farm_shop_cart"
+        android:layout_centerInParent="true"
+        android:id="@+id/empty_shop_cart"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/empty_shop_cart"
+        android:layout_centerHorizontal="true"
+        android:text="你的购物车是空的哦!快去逛一逛吧~"
+        android:layout_marginTop="15dp"
+        />
+
+</RelativeLayout>

@@ -41,29 +41,28 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
             R.mipmap.icon_shopping_cart_normal,
             R.mipmap.icon_mine_normal
     };
-    private List<MainFragment> mFragments;
-    public TextView mShopCountTextView;
+    private  List<MainFragment> mFragments;
+    public  TextView mShopCountTextView;
     public Context mContex;
-    private int mBuyCount;
-    private List<HomeModel.HomeChildModel> modelList;
-    private BroadcastReceiver mReceiver = new BroadcastReceiver() {
+    public  BroadcastReceiver mReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
-            String action = intent.getAction();
-            if (action.equals("shoppingCountAdd")){
 
-                mBuyCount++;
+            List<HomeModel.HomeChildModel> saveList = DataBaseTools.getInstance(mContex).findAll();
+           ShopingFragment shopingFragment = (ShopingFragment) mFragments.get(3);
+           shopingFragment.setupSaveData(saveList);
+
+            HomeFrament homeFrament = (HomeFrament) mFragments.get(0);
+            homeFrament.setupData();
+            int buyCount = 0;
+            for (HomeModel.HomeChildModel model:saveList){
+                buyCount += model.buyCout;
+            }
+            if (buyCount > 0){
                 mShopCountTextView.setVisibility(View.VISIBLE);
-                mShopCountTextView.setText("" + mBuyCount);
-            }else if (action.equals("shoppingCountSub")){
-                mBuyCount--;
-                if (mBuyCount == 0){
-                    mBuyCount = 0;
-                    mShopCountTextView.setVisibility(View.GONE);
-                }else {
-                    mShopCountTextView.setVisibility(View.VISIBLE);
-                    mShopCountTextView.setText("" + mBuyCount);
-                }
+                mShopCountTextView.setText(buyCount+"");
+            }else {
+                mShopCountTextView.setVisibility(View.GONE);
             }
 
         }
@@ -78,10 +77,9 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
         intentFilter.addAction("shoppingCountSub");
         intentFilter.addAction("shoppingCountAdd");
         registerReceiver(mReceiver,intentFilter);
-
+        mContex = this;
         mImageViews = new ArrayList<>();
         mFragments = new ArrayList<>();
-        modelList = new ArrayList<>();
         mShopCountTextView = (TextView) findViewById(R.id.shopCount);
         ImageView mHomeImage = (ImageView) findViewById(R.id.home);
         mHomeImage.setOnClickListener(this);
@@ -125,7 +123,12 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
             for (HomeModel.HomeChildModel model:modelList){
                 buyCount += model.buyCout;
             }
-            LogTools.e("" + buyCount);
+           if (buyCount > 0){
+               mShopCountTextView.setVisibility(View.VISIBLE);
+               mShopCountTextView.setText(buyCount+"");
+           }else {
+               mShopCountTextView.setVisibility(View.GONE);
+           }
 
 
     }

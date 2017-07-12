@@ -26,6 +26,7 @@ import a315i.youcai.Activity.MainDetailActivity;
 import a315i.youcai.BaseClass.MainFragment;
 import a315i.youcai.Model.Home.HomeModel;
 import a315i.youcai.R;
+import a315i.youcai.Tools.DataBaseTools;
 import a315i.youcai.Tools.GsonTools;
 import a315i.youcai.Tools.LogTools;
 import a315i.youcai.Tools.NetWorkTools;
@@ -58,6 +59,22 @@ public class HomeFrament extends MainFragment  implements View.OnClickListener{
                 tops = model.tops;
                 entries = model.entries;
                 List<HomeModel.slidesModel> slidesModels = model.slides;
+                //读取本地数据库,给新请求的数据赋值
+                List<HomeModel.HomeChildModel> modelList = DataBaseTools.getInstance(getContext()).findAll();
+                for (HomeModel.HomeChildModel saveModel : modelList){
+                    for (HomeModel.HomeChildModel topItem : model.tops){
+                        if (saveModel.id == topItem.id){
+                            topItem.buyCout = saveModel.buyCout;
+                        }
+                    }
+                    for (HomeModel.HomeChildModel bootomItem : model.items){
+                        if (bootomItem.id == saveModel.id){
+                            bootomItem.buyCout = saveModel.buyCout;
+                        }
+                    }
+
+                }
+
                 ToastTools.showLong(getActivity(),"请求成功");
                 mRecycerViewAdapter = new HomeRecycerViewAdapter(R.layout.home_item,R.layout.home_header_item,getSampleData(model),getActivity());
                 mRecyclerView.setAdapter(mRecycerViewAdapter);

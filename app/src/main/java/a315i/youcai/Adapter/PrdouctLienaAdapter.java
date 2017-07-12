@@ -16,6 +16,7 @@ import java.util.List;
 
 import a315i.youcai.Model.Home.HomeModel;
 import a315i.youcai.R;
+import a315i.youcai.Tools.DataBaseTools;
 
 /**
  * Created by zhouzunxian on 2017/7/10.
@@ -49,6 +50,9 @@ public class PrdouctLienaAdapter extends BaseQuickAdapter<HomeModel.HomeChildMod
                     item.buyCout = 0;
                     shopImageView.setVisibility(View.VISIBLE);
                     shopLayout.setVisibility(View.GONE);
+                    DataBaseTools.getInstance(mContext).delete(item);
+                }else {
+                    DataBaseTools.getInstance(mContext).save(item);
                 }
                 notifyDataSetChanged();
                 Intent intent = new Intent();
@@ -60,6 +64,7 @@ public class PrdouctLienaAdapter extends BaseQuickAdapter<HomeModel.HomeChildMod
             @Override
             public void onClick(View v) {
                 item.buyCout++;
+                DataBaseTools.getInstance(mContext).save(item);
                 notifyDataSetChanged();
                 Intent intent = new Intent();
                 intent.setAction("shoppingCountAdd");
@@ -83,6 +88,7 @@ public class PrdouctLienaAdapter extends BaseQuickAdapter<HomeModel.HomeChildMod
             @Override
             public void onClick(View v) {
                 item.buyCout = 1;
+                DataBaseTools.getInstance(mContext).save(item);
                 notifyDataSetChanged();
                 Intent intent = new Intent();
                 intent.setAction("shoppingCountAdd");

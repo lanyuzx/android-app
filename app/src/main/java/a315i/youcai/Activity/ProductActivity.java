@@ -22,6 +22,7 @@ import a315i.youcai.Adapter.PrdouctGridAdapter;
 import a315i.youcai.Adapter.PrdouctLienaAdapter;
 import a315i.youcai.Model.Home.HomeModel;
 import a315i.youcai.R;
+import a315i.youcai.Tools.DataBaseTools;
 import a315i.youcai.Tools.GsonTools;
 import a315i.youcai.Tools.LogTools;
 import a315i.youcai.Tools.NetWorkTools;
@@ -53,6 +54,8 @@ public class ProductActivity extends AppCompatActivity implements View.OnClickLi
         String url = intent.getStringExtra("prdouctUrl");
         setupData(url);
 
+
+
     }
 
     private void setupData(String url){
@@ -62,6 +65,17 @@ public class ProductActivity extends AppCompatActivity implements View.OnClickLi
             public void onResponse(String response) {
                 HomeModel items = GsonTools.parseJsonWithGson(response,HomeModel.class);
                 modelList = items.items;
+                //读取本地数据库,给新请求的数据赋值
+                List<HomeModel.HomeChildModel> saveList = DataBaseTools.getInstance(getApplicationContext()).findAll();
+                for (HomeModel.HomeChildModel saveModel : saveList){
+
+                    for (HomeModel.HomeChildModel productModel : modelList){
+                        if (productModel.id == saveModel.id){
+                            productModel.buyCout = saveModel.buyCout;
+                        }
+                    }
+
+                }
                 if (mManager == null){
                     mManager = new LinearLayoutManager(getApplicationContext());
                     //mGridAdapter = new PrdouctGridAdapter(modelList,getApplicationContext());

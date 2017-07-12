@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="100dp"
+    >
+    <a315i.youcai.Tools.ImageTools
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_gravity="center"
+        android:layout_marginLeft="25dp"
+        android:id="@+id/shopping_icon"
+        android:src="@drawable/icon_exchange"
+        android:layout_centerVertical="true"
+        />
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="5dp"
+        android:layout_toRightOf="@+id/shopping_icon"
+        android:layout_centerVertical="true"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="木耳菜"
+            android:id="@+id/shop_title"
+            android:textColor="#585858"
+            android:textSize="16sp"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="木耳菜"
+            android:id="@+id/shop_unit_price"
+            android:textColor="#585858"
+            android:alpha="0.6"
+            android:layout_below="@+id/shop_title"
+            android:layout_marginTop="5dp"
+            android:textSize="14sp"
+            />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerInParent="true"
+        android:layout_marginRight="12dp"
+        android:orientation="horizontal"
+        android:id="@+id/shopLayout"
+        >
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:src="@drawable/icon_sub"
+            android:id="@+id/shop_subImage"
+            android:layout_marginRight="10dp"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1"
+            android:textSize="16sp"
+            android:layout_gravity="center"
+            android:id="@+id/shop_buyCout"
+            />
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:src="@drawable/icon_add"
+            android:id="@+id/shop_addImage"
+            android:layout_marginLeft="10dp"
+            />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_alignParentBottom="true"
+        android:background="#585858"
+        android:alpha="0.4"
+        />
+
+
+</RelativeLayout>
