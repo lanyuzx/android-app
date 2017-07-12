@@ -73,6 +73,7 @@
             android:textSize="16sp"
             android:textColor="#c06344"
             android:layout_marginLeft="20dp"
+            android:id="@+id/shop_totoalPrice"
             />
         <TextView
             android:layout_width="120dp"

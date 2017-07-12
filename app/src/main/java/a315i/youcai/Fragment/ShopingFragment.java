@@ -12,6 +12,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
+
+import org.xutils.view.annotation.ViewInject;
 
 import java.util.List;
 
@@ -32,6 +35,10 @@ public class ShopingFragment extends MainFragment {
     private ShoppingAdapter mShoppingAdapter;
     private LinearLayout mShop_message_layout;
     private RelativeLayout mShop_pay_layout;
+
+    @ViewInject(R.id.shop_totoalPrice)
+    private TextView mTotalPrice;
+
     @Override
     public void setupData() {
 
@@ -44,6 +51,7 @@ public class ShopingFragment extends MainFragment {
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         mShop_message_layout = (LinearLayout) shopView.findViewById(R.id.shop_message_layout);
         mShop_pay_layout = (RelativeLayout) shopView.findViewById(R.id.shop_pay_layout);
+        mTotalPrice = (TextView) mShop_pay_layout.findViewById(R.id.shop_totoalPrice);
         //读取本地数据库
         List<HomeModel.HomeChildModel> saveList = DataBaseTools.getInstance(getContext()).findAll();
         mShoppingAdapter = new ShoppingAdapter(saveList,getContext());
@@ -54,6 +62,18 @@ public class ShopingFragment extends MainFragment {
             mShop_pay_layout.setVisibility(View.GONE);
             mShoppingAdapter.setEmptyView(R.layout.shopping_empty);
         }
+        float totalPrice = 0;
+        for (HomeModel.HomeChildModel saveModel : saveList){
+            totalPrice += saveModel.price/100* saveModel.buyCout;
+
+        }
+        if (totalPrice > 100){
+            mTotalPrice.setText("共付: ¥" + totalPrice + "(免运费)");
+        }else {
+            totalPrice+= 18;
+            mTotalPrice.setText("共付: ¥" + totalPrice  + "(含运费18元)");
+        }
+
 
         return shopView;
     }
@@ -69,6 +89,21 @@ public class ShopingFragment extends MainFragment {
         }else {
             mShop_message_layout.setVisibility(View.VISIBLE);
             mShop_pay_layout.setVisibility(View.VISIBLE);
+
+        }
+        float totalPrice = 0;
+        for (HomeModel.HomeChildModel saveModel : models){
+            totalPrice += saveModel.price/100 * saveModel.buyCout;
+
+        }
+        if (totalPrice == 0){
+            return;
+        }
+        if (totalPrice > 100){
+            mTotalPrice.setText("共付: ¥" + totalPrice + "(免运费)");
+        }else {
+            totalPrice+=18;
+            mTotalPrice.setText("共付: ¥" + totalPrice  + "(含运费18元)");
         }
 
 

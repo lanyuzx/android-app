@@ -5,7 +5,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <!-- SDCard中创建与删除文件权限 -->
-    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"/>
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
 
     <application
         android:name=".MainApplication"
@@ -25,8 +25,9 @@
         <activity android:name=".Activity.MainDetailActivity" />
         <activity
             android:name=".Activity.ProductActivity"
-            android:windowSoftInputMode="stateHidden"></activity>
-        <activity android:name=".Activity.LoginActivity"></activity>
+            android:windowSoftInputMode="stateHidden" />
+        <activity android:name=".Activity.LoginActivity" />
+        <activity android:name=".Activity.CaiPuDetailActivity"></activity>
     </application>
 
 </manifest>

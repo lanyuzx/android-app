@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    >
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="250dp">
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/caipudetail_header_bgicon"
+        android:background="@color/colorAccent"
+        android:scaleType="fitXY"
+        />
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="12dp"
+        android:layout_marginBottom="12dp"
+        android:orientation="horizontal"
+        >
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/icon_look"
+            android:layout_gravity="center"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="5dp"
+            android:text="406"
+            android:textColor="#fff"
+            android:textSize="12sp"
+            android:id="@+id/caipudetail_header_look"
+            />
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/icon_like_l"
+            android:layout_gravity="center"
+            android:layout_marginLeft="5dp"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="5dp"
+            android:text="17"
+            android:textColor="#fff"
+            android:textSize="12sp"
+            android:id="@+id/caipudetail_header_like"
+            />
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/icon_comment_l"
+            android:layout_gravity="center"
+            android:layout_marginLeft="5dp"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="5dp"
+            android:text="4"
+            android:textColor="#fff"
+            android:textSize="12sp"
+            android:id="@+id/caipudetail_header_comment"
+            />
+
+    </LinearLayout>
+</RelativeLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="12dp"
+        android:text="活力早仓"
+        android:textColor="#585858"
+        android:textSize="18sp"
+        android:id="@+id/caipudetail_header_titles"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        >
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@color/colorAccent"
+            android:id="@+id/caipudetail_header_icon"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="5dp"
+            android:text="蔡小梅"
+            android:textSize="15sp"
+            android:textColor="#585858"
+            android:id="@+id/caipudetail_header_nikeName"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="5dp"
+            android:text="2017-05-18"
+            android:textSize="15sp"
+            android:textColor="#585858"
+            android:id="@+id/caipudetail_header_time"
+            />
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginRight="12dp"
+        android:text="     将小番茄和话梅一同倒进密封罐，挤入柠檬汁，加一勺去年腌制的梅子酒，香味顿时就出来了，也可以再放一个梅子酒里的梅子一同密封"
+        android:textSize="15sp"
+        android:textColor="#585858"
+        android:layout_gravity="center"
+        android:id="@+id/caipudetail_header_content"
+        />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="- 用料 -"
+            android:textSize="15sp"
+            android:textColor="#585858"
+            android:layout_gravity="center"
+            />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:id="@+id/caipudetail_header_layout"
+        android:orientation="vertical"
+        >
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="- 步骤 -"
+        android:textSize="15sp"
+        android:textColor="#585858"
+        android:layout_gravity="center"
+        />
+
+
+</LinearLayout>
