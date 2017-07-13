@@ -17,7 +17,7 @@
             android:src="@drawable/icon_back"
             android:layout_marginLeft="12dp"
             android:layout_centerVertical="true"
-            android:id="@+id/login_backIv"
+            android:id="@+id/feedBack_backIv"
             android:layout_marginTop="12dp"
             />
         <TextView
