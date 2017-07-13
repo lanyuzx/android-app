@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="12dp"
+        android:id="@+id/caipu_detai_comment_icon"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/caipu_detai_comment_icon"
+        android:layout_marginTop="12dp"
+        android:layout_marginLeft="12dp"
+        android:text="1337373773"
+        android:textColor="#585858"
+         android:textSize="15sp"
+        android:id="@+id/caipu_detai_comment_nikename"
+
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="12dp"
+        android:text="不错"
+        android:textColor="#585858"
+        android:textSize="15sp"
+        android:layout_below="@+id/caipu_detai_comment_icon"
+       android:layout_marginTop="5dp"
+        android:id="@+id/caipu_detai_comment_content"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="12dp"
+        android:text="2017-09-15"
+        android:textColor="#585858"
+        android:textSize="15sp"
+        android:layout_below="@+id/caipu_detai_comment_nikename"
+        android:layout_toRightOf="@+id/caipu_detai_comment_icon"
+        android:id="@+id/caipu_detai_comment_time"
+        />
+
+</RelativeLayout>

@@ -8,7 +8,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         >
-        <a315i.youcai.Tools.ImageTools
+        <de.hdodenhof.circleimageview.CircleImageView
             android:layout_width="15dp"
             android:layout_height="15dp"
             android:src="@drawable/icon_baby"

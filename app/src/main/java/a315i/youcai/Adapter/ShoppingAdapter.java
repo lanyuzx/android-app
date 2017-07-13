@@ -2,6 +2,8 @@ package a315i.youcai.Adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
+import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -9,6 +11,7 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.squareup.picasso.Picasso;
 
+import java.io.Serializable;
 import java.util.List;
 
 import a315i.youcai.Model.Home.HomeModel;
@@ -53,13 +56,11 @@ public class ShoppingAdapter extends BaseQuickAdapter<HomeModel.HomeChildModel ,
                 if (item.buyCout == 0){
                     item.buyCout = 0;
                     DataBaseTools.getInstance(mContext).delete(item);
-                    notifyDataSetChanged();
                     Intent intent = new Intent();
-                    intent.setAction("shoppingCountSub");
-//                   Bundle bundle = new Bundle();
-//                   bundle.putSerializable("model", (Serializable) model);
-//                   intent.putExtras(bundle);
+                    intent.setAction("shoppingCountDelete");
                     mContext.sendBroadcast(intent);
+                    notifyDataSetChanged();
+
 
                 }else {
                     DataBaseTools.getInstance(mContext).save(item);

@@ -16,6 +16,7 @@ import com.squareup.picasso.Picasso;
 import org.xutils.http.RequestParams;
 
 import a315i.youcai.Adapter.CaipuDetailAdapter;
+import a315i.youcai.Adapter.CaipuDetailFooterCommnetAdapter;
 import a315i.youcai.Adapter.MainDetailComntensAdapter;
 import a315i.youcai.Model.Home.CaiPuModel.CaipuDetailModel;
 import a315i.youcai.R;
@@ -57,7 +58,7 @@ public class CaiPuDetailActivity extends AppCompatActivity {
                 mCaipuDetailAdapter = new CaipuDetailAdapter(mRecipe.steps,getApplicationContext());
                 mRecyclerView.setAdapter(mCaipuDetailAdapter);
                 setupHeaderView();
-                if (detailModel.comments != null){
+                if (!detailModel.comments.isEmpty()&& detailModel.comments!=null){
                     setupFooterView(detailModel);
                 }else {
                     mCaipuDetailAdapter.removeAllFooterView();
@@ -79,7 +80,7 @@ public class CaiPuDetailActivity extends AppCompatActivity {
         View footerView = View.inflate(getApplicationContext(),R.layout.caipudetai_footer,null);
         RecyclerView recyclerView = (RecyclerView) footerView.findViewById(R.id.caipu_detailFooterconmentRv);
         recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
-        recyclerView.setAdapter(new MainDetailComntensAdapter(detailModel.comments,getApplicationContext()));
+        recyclerView.setAdapter(new CaipuDetailFooterCommnetAdapter(detailModel.comments,getApplicationContext()));
         mCaipuDetailAdapter.addFooterView(footerView);
 
     }

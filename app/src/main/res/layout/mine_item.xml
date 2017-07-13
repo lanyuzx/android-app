@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    >
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/icon_my_settings"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="12dp"
+        android:layout_marginLeft="20dp"
+        android:id="@+id/mine_item_icon"
+        android:layout_centerVertical="true"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="12dp"
+        android:textColor="#585858"
+        android:textSize="16sp"
+        android:text="我的套餐"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@+id/mine_item_icon"
+        android:id="@+id/mine_item_title"
+        />
+
+    <ImageView
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:src="@drawable/icon_arrow_phone"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="12dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="12dp"
+        android:id="@+id/mine_item_arrow"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#585858"
+        android:textSize="16sp"
+        android:text="选材"
+        android:layout_centerVertical="true"
+        android:layout_toLeftOf="@+id/mine_item_arrow"
+        android:id="@+id/mine_item_mtitle"
+
+        />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.2dp"
+        android:layout_alignParentBottom="true"
+        android:background="#585858"
+        android:alpha="0.2"
+        />
+
+
+</RelativeLayout>

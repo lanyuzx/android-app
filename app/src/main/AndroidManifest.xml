@@ -27,7 +27,10 @@
             android:name=".Activity.ProductActivity"
             android:windowSoftInputMode="stateHidden" />
         <activity android:name=".Activity.LoginActivity" />
-        <activity android:name=".Activity.CaiPuDetailActivity"></activity>
+        <activity android:name=".Activity.CaiPuDetailActivity" />
+        <activity android:name=".Activity.MoreInfoActivity" />
+        <activity android:name=".Activity.WebViewActivity" />
+        <activity android:name=".Activity.FeedbackActivity"></activity>
     </application>
 
 </manifest>

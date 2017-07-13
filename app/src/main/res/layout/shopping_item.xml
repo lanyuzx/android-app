@@ -3,14 +3,16 @@
     android:layout_width="match_parent"
     android:layout_height="100dp"
     >
-    <a315i.youcai.Tools.ImageTools
-        android:layout_width="60dp"
-        android:layout_height="60dp"
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:layout_width="80dp"
+        android:layout_height="80dp"
         android:layout_gravity="center"
         android:layout_marginLeft="25dp"
         android:id="@+id/shopping_icon"
         android:src="@drawable/icon_exchange"
         android:layout_centerVertical="true"
+        civ_border_width="2dp"
+        civ_border_color="#FFf"
         />
 
     <RelativeLayout

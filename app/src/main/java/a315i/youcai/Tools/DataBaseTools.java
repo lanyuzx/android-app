@@ -43,11 +43,13 @@ public class DataBaseTools {
 
     private DataBaseOpenHelper openHelper;
     private static final String  youcai_Table = "youcai_Table";
+    private Context mContex;
     //BlackNumberDao单例模式
     //1,私有化构造方法
     private DataBaseTools(Context context){
         //创建数据库已经其表机构
         openHelper = new DataBaseOpenHelper(context);
+        this.mContex = context;
     }
     //2,声明一个当前类的对象
     private static DataBaseTools instance = null;
@@ -55,6 +57,7 @@ public class DataBaseTools {
     public static DataBaseTools getInstance(Context context){
         if(instance == null){
             instance = new DataBaseTools(context);
+
         }
         return instance;
     }
@@ -137,7 +140,13 @@ public class DataBaseTools {
 //    }
     public  void delete(HomeModel.HomeChildModel type)  {
         SQLiteDatabase db = openHelper.getWritableDatabase();
-        db.delete(youcai_Table, "id = ?", new String[]{type.id + ""});
+      int result =  db.delete(youcai_Table, "id = ?", new String[]{type.id + ""});
+        if (result == 1){
+            ToastTools.showShort(mContex,"删除成功" + result);
+        }else {
+            ToastTools.showShort(mContex,"删除失败" + result);
+        }
+
 
         db.close();
     }

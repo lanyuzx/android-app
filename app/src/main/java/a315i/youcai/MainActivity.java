@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
            shopingFragment.setupSaveData(saveList);
 
             HomeFrament homeFrament = (HomeFrament) mFragments.get(0);
-            homeFrament.setupData();
+            homeFrament.setupSaveData(saveList);
             int buyCount = 0;
             for (HomeModel.HomeChildModel model:saveList){
                 buyCount += model.buyCout;
@@ -76,6 +76,7 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
         IntentFilter intentFilter = new IntentFilter();
         intentFilter.addAction("shoppingCountSub");
         intentFilter.addAction("shoppingCountAdd");
+        intentFilter.addAction("shoppingCountDelete");
         registerReceiver(mReceiver,intentFilter);
         mContex = this;
         mImageViews = new ArrayList<>();

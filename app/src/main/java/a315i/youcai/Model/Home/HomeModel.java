@@ -30,7 +30,7 @@ public class HomeModel {
         public Map<String,Integer> link;
     }
 
-    public static class HomeChildModel  {
+    public static class HomeChildModel implements Serializable  {
 
         public HomeChildModel(){
 

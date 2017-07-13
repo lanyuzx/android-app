@@ -95,10 +95,9 @@
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         >
-        <ImageView
+        <de.hdodenhof.circleimageview.CircleImageView
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:background="@color/colorAccent"
             android:id="@+id/caipudetail_header_icon"
             />
         <TextView

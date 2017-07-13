@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.NumberPicker;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.google.gson.Gson;
@@ -42,6 +43,7 @@ public class HomeFrament extends MainFragment  implements View.OnClickListener{
     private List<HomeModel.HomeChildModel> tops;
     private  List<HomeModel.HomeChildModel> items;
     private  List<HomeModel.entriesModel> entries;
+    private HomeModel mModel;
 
 
 
@@ -54,29 +56,27 @@ public class HomeFrament extends MainFragment  implements View.OnClickListener{
             @Override
             public void onResponse(String response) {
                 LogTools.i(response);
-               HomeModel model =   GsonTools.parseJsonWithGson(response, HomeModel.class);
-                items = model.items;
-                tops = model.tops;
-                entries = model.entries;
-                List<HomeModel.slidesModel> slidesModels = model.slides;
-                //读取本地数据库,给新请求的数据赋值
+                mModel =   GsonTools.parseJsonWithGson(response, HomeModel.class);
+                items = mModel.items;
+                tops = mModel.tops;
+                entries = mModel.entries;
+                List<HomeModel.slidesModel> slidesModels = mModel.slides;
+                ToastTools.showLong(getActivity(),"请求成功");
                 List<HomeModel.HomeChildModel> modelList = DataBaseTools.getInstance(getContext()).findAll();
                 for (HomeModel.HomeChildModel saveModel : modelList){
-                    for (HomeModel.HomeChildModel topItem : model.tops){
+                    for (HomeModel.HomeChildModel topItem : mModel.tops){
                         if (saveModel.id == topItem.id){
                             topItem.buyCout = saveModel.buyCout;
                         }
                     }
-                    for (HomeModel.HomeChildModel bootomItem : model.items){
+                    for (HomeModel.HomeChildModel bootomItem : mModel.items){
                         if (bootomItem.id == saveModel.id){
                             bootomItem.buyCout = saveModel.buyCout;
                         }
                     }
 
                 }
-
-                ToastTools.showLong(getActivity(),"请求成功");
-                mRecycerViewAdapter = new HomeRecycerViewAdapter(R.layout.home_item,R.layout.home_header_item,getSampleData(model),getActivity());
+                mRecycerViewAdapter = new HomeRecycerViewAdapter(R.layout.home_item,R.layout.home_header_item,getSampleData(mModel),getActivity());
                 mRecyclerView.setAdapter(mRecycerViewAdapter);
                 setupHeaderView(slidesModels);
                 setupDetailItemClick();
@@ -88,6 +88,36 @@ public class HomeFrament extends MainFragment  implements View.OnClickListener{
 
             }
         });
+
+    }
+
+    public void setupSaveData(List<HomeModel.HomeChildModel> modelList){
+
+        if (!modelList.isEmpty()&& modelList!=null){
+            //读取本地数据库,给新请求的数据赋值
+            for (HomeModel.HomeChildModel saveModel : modelList){
+                for (HomeModel.HomeChildModel topItem : mModel.tops){
+                    if (saveModel.id == topItem.id){
+                        topItem.buyCout = saveModel.buyCout;
+                    }
+                }
+                for (HomeModel.HomeChildModel bootomItem : mModel.items){
+                    if (bootomItem.id == saveModel.id){
+                        bootomItem.buyCout = saveModel.buyCout;
+                    }
+                }
+
+            }
+        }else {
+            for (HomeModel.HomeChildModel topItem : mModel.tops){
+                topItem.buyCout = 0;
+            }
+            for (HomeModel.HomeChildModel bootomItem : mModel.items){
+                bootomItem.buyCout = 0;
+            }
+        }
+
+        mRecycerViewAdapter.notifyDataSetChanged();
 
     }
 
