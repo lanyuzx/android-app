@@ -22,6 +22,7 @@
             android:layout_centerVertical="true"
             android:layout_marginRight="12dp"
             android:padding="12dp"
+            android:id="@+id/moreinfo_item_arrow"
             />
         <View
             android:layout_width="match_parent"

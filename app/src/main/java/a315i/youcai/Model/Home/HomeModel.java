@@ -1,6 +1,8 @@
 package a315i.youcai.Model.Home;
 
 
+import com.chad.library.adapter.base.entity.MultiItemEntity;
+
 import org.xutils.db.annotation.Column;
 import org.xutils.db.annotation.Table;
 
@@ -13,14 +15,13 @@ import java.util.Map;
  */
 @Table(name = "youcai_product", onCreated = "CREATE UNIQUE INDEX index_name")
 public class HomeModel {
-    public HomeModel(){
 
-    }
 
     public List<HomeChildModel> items;
     public List<HomeChildModel> tops;
     public List<entriesModel> entries;
     public List<slidesModel> slides;
+
 
 
     public class slidesModel{
@@ -30,12 +31,12 @@ public class HomeModel {
         public Map<String,Integer> link;
     }
 
-    public static class HomeChildModel implements Serializable  {
+    public static class HomeChildModel implements MultiItemEntity {
 
         public HomeChildModel(){
 
         }
-
+        public int layoutType;
         public String getTitle() {
             return title;
         }
@@ -195,6 +196,11 @@ public class HomeModel {
                     ", link='" + link + '\'' +
                     ", buyCout=" + buyCout +
                     '}';
+        }
+
+        @Override
+        public int getItemType() {
+            return layoutType;
         }
     }
     public class entriesModel {

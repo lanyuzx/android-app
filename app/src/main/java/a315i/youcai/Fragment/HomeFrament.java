@@ -2,12 +2,14 @@ package a315i.youcai.Fragment;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.NumberPicker;
+import android.widget.RelativeLayout;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.google.gson.Gson;
@@ -22,6 +24,7 @@ import java.util.List;
 
 import a315i.youcai.Activity.LoginActivity;
 import a315i.youcai.Activity.ProductActivity;
+import a315i.youcai.Activity.SearchActivity;
 import a315i.youcai.Adapter.HomeRecycerViewAdapter;
 import a315i.youcai.Activity.MainDetailActivity;
 import a315i.youcai.BaseClass.MainFragment;
@@ -44,6 +47,9 @@ public class HomeFrament extends MainFragment  implements View.OnClickListener{
     private  List<HomeModel.HomeChildModel> items;
     private  List<HomeModel.entriesModel> entries;
     private HomeModel mModel;
+    private RelativeLayout mHome_NavView;
+    private ImageView mScanImageView;
+    private static  int currentDy;
 
 
 
@@ -127,11 +133,42 @@ public class HomeFrament extends MainFragment  implements View.OnClickListener{
 
         mRecyclerView = (RecyclerView) homeView.findViewById(R.id.homeRecyclerView);
         LinearLayoutManager manager = new LinearLayoutManager(getActivity());
+        homeView.findViewById(R.id.homeSerch).setOnClickListener(this);
+        homeView.findViewById(R.id.home_scan).setOnClickListener(this);
         mRecyclerView.setLayoutManager(manager);
+        mHome_NavView = (RelativeLayout) homeView.findViewById(R.id.home_NavView);
+        mScanImageView = (ImageView) mHome_NavView.findViewById(R.id.home_scan);
+        setupScrolListenner();
 
         return homeView;
     }
 
+    private  void setupScrolListenner(){
+        mRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+            }
+
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+
+                currentDy += dy;
+                LogTools.e("" +currentDy);
+                if (currentDy >= 295 ) {
+                    mHome_NavView.setAlpha((float) 0.8);
+                    mHome_NavView.setBackgroundColor(Color.WHITE);
+                    mScanImageView.setImageResource(R.drawable.scan2);
+                } else {
+                    mHome_NavView.setAlpha((float) 0.3);
+                    mHome_NavView.setBackgroundColor(Color.GRAY);
+                    mScanImageView.setImageResource(R.drawable.scan);
+                }
+
+            }
+        });
+    }
     private void setupHeaderView(List<HomeModel.slidesModel> slides){
 
         View headerView = View.inflate(getActivity(),R.layout.home_recycerview_header,null);
@@ -205,30 +242,47 @@ public class HomeFrament extends MainFragment  implements View.OnClickListener{
         switch (v.getId()){
             case R.id.vegetables:
                 index = 0;
+                setupProductActivity(index);
                 break;
             case R.id.meat_egg:
                 index = 1;
+                setupProductActivity(index);
                 break;
             case R.id.grain_oil:
                 index = 2;
+                setupProductActivity(index);
                 break;
             case R.id.icon_baby:
                 index = 3;
+                setupProductActivity(index);
                 break;
             case R.id.choose_food:
                 index = 4;
+                setupProductActivity(index);
                 break;
             case R.id.coupons:
                 index = 5;
+                setupProductActivity(index);
                 break;
             case R.id.exchange:
                 index = 6;
+                setupProductActivity(index);
                 break;
             case R.id.recharge:
                 index = 7;
+                setupProductActivity(index);
                 break;
+            case R.id.homeSerch:
+                Intent intent = new Intent(getContext(), SearchActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.home_scan:
+                ToastTools.showShort(getContext(),"二维码");
+                break;
+
         }
-        setupProductActivity(index);
+
+
 
 
     }

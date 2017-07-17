@@ -155,7 +155,7 @@ public class ProductActivity extends AppCompatActivity implements View.OnClickLi
 
     }
 
-    public class SpacesItemDecoration extends RecyclerView.ItemDecoration {
+    public static class SpacesItemDecoration extends RecyclerView.ItemDecoration {
 
         private int space;
 

@@ -30,7 +30,8 @@
         <activity android:name=".Activity.CaiPuDetailActivity" />
         <activity android:name=".Activity.MoreInfoActivity" />
         <activity android:name=".Activity.WebViewActivity" />
-        <activity android:name=".Activity.FeedbackActivity"></activity>
+        <activity android:name=".Activity.FeedbackActivity" />
+        <activity android:name=".Activity.SearchActivity"></activity>
     </application>
 
 </manifest>

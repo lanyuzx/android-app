@@ -1,11 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
     <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:id="@+id/homeRecyclerView"
         >
     </android.support.v7.widget.RecyclerView>
-</LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="49dp"
+        android:id="@+id/home_NavView"
+        >
+        <ImageView
+            android:layout_width="45dp"
+            android:layout_height="40dp"
+            android:src="@drawable/scan"
+            android:layout_marginLeft="12dp"
+            android:layout_centerVertical="true"
+            android:id="@+id/home_scan"
+            />
+
+        <RelativeLayout
+            android:layout_width="250dp"
+            android:layout_height="40dp"
+            android:layout_centerInParent="true"
+            android:background="@drawable/product_search"
+            android:alpha="0.8"
+            android:id="@+id/homeSerch"
+            >
+            <ImageView
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:src="@drawable/icon_fang"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="5dp"
+                android:id="@+id/search_Iv"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@+id/search_Iv"
+                android:layout_marginLeft="5dp"
+                android:layout_centerVertical="true"
+                android:hint="请输入关键字"
+                android:background="@null"
+                android:id="@+id/product_search_Et"
+                />
+        </RelativeLayout>
+
+    </RelativeLayout>
+</RelativeLayout>
