@@ -13,6 +13,9 @@ import android.widget.RelativeLayout;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.google.gson.Gson;
+import com.scwang.smartrefresh.header.MaterialHeader;
+import com.scwang.smartrefresh.layout.api.RefreshLayout;
+import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.squareup.picasso.Picasso;
 import com.youth.banner.Banner;
 import com.youth.banner.loader.ImageLoader;
@@ -50,6 +53,7 @@ public class HomeFrament extends MainFragment  implements View.OnClickListener{
     private RelativeLayout mHome_NavView;
     private ImageView mScanImageView;
     private static  int currentDy;
+    private  RefreshLayout mRefreshLayout;
 
 
 
@@ -86,6 +90,7 @@ public class HomeFrament extends MainFragment  implements View.OnClickListener{
                 mRecyclerView.setAdapter(mRecycerViewAdapter);
                 setupHeaderView(slidesModels);
                 setupDetailItemClick();
+                mRefreshLayout.finishRefresh();
 
             }
             @Override
@@ -139,6 +144,14 @@ public class HomeFrament extends MainFragment  implements View.OnClickListener{
         mHome_NavView = (RelativeLayout) homeView.findViewById(R.id.home_NavView);
         mScanImageView = (ImageView) mHome_NavView.findViewById(R.id.home_scan);
         setupScrolListenner();
+        mRefreshLayout = (RefreshLayout) homeView.findViewById(R.id.homefragment_refreshLayout);
+        mRefreshLayout.setOnRefreshListener(new OnRefreshListener() {
+            @Override
+            public void onRefresh(RefreshLayout refreshlayout) {
+                setupData();
+
+            }
+        });
 
         return homeView;
     }

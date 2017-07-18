@@ -36,5 +36,7 @@ dependencies {
     compile 'com.youth.banner:banner:1.4.9'
     compile 'com.squareup.picasso:picasso:2.5.2'
     compile 'de.hdodenhof:circleimageview:2.1.0'
+    compile 'com.scwang.smartrefresh:SmartRefreshLayout:1.0.2-alpha-5'
+    compile 'com.scwang.smartrefresh:SmartRefreshHeader:1.0.2-alpha-5'
     testCompile 'junit:junit:4.12'
 }
