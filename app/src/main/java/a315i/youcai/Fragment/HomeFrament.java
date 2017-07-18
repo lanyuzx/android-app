@@ -54,6 +54,7 @@ public class HomeFrament extends MainFragment  implements View.OnClickListener{
     private ImageView mScanImageView;
     private static  int currentDy;
     private  RefreshLayout mRefreshLayout;
+    private View mHeaderView;
 
 
 
@@ -91,7 +92,8 @@ public class HomeFrament extends MainFragment  implements View.OnClickListener{
                 setupHeaderView(slidesModels);
                 setupDetailItemClick();
                 mRefreshLayout.finishRefresh();
-
+                mRecyclerView.scrollBy(0, -(295*4));
+                
             }
             @Override
             public void onResponseError(Throwable error) {
@@ -161,6 +163,7 @@ public class HomeFrament extends MainFragment  implements View.OnClickListener{
             @Override
             public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
                 super.onScrollStateChanged(recyclerView, newState);
+
             }
 
             @Override
@@ -179,22 +182,23 @@ public class HomeFrament extends MainFragment  implements View.OnClickListener{
                     mScanImageView.setImageResource(R.drawable.scan);
                 }
 
+
             }
         });
     }
     private void setupHeaderView(List<HomeModel.slidesModel> slides){
 
-        View headerView = View.inflate(getActivity(),R.layout.home_recycerview_header,null);
-        headerView.findViewById(R.id.vegetables).setOnClickListener(this);
-        headerView.findViewById(R.id.meat_egg).setOnClickListener(this);
-        headerView.findViewById(R.id.grain_oil).setOnClickListener(this);
-        headerView.findViewById(R.id.icon_baby).setOnClickListener(this);
-        headerView.findViewById(R.id.choose_food).setOnClickListener(this);
-        headerView.findViewById(R.id.coupons).setOnClickListener(this);
-        headerView.findViewById(R.id.exchange).setOnClickListener(this);
-        headerView.findViewById(R.id.recharge).setOnClickListener(this);
+        mHeaderView = View.inflate(getActivity(),R.layout.home_recycerview_header,null);
+        mHeaderView.findViewById(R.id.vegetables).setOnClickListener(this);
+        mHeaderView.findViewById(R.id.meat_egg).setOnClickListener(this);
+        mHeaderView.findViewById(R.id.grain_oil).setOnClickListener(this);
+        mHeaderView.findViewById(R.id.icon_baby).setOnClickListener(this);
+        mHeaderView.findViewById(R.id.choose_food).setOnClickListener(this);
+        mHeaderView.findViewById(R.id.coupons).setOnClickListener(this);
+        mHeaderView.findViewById(R.id.exchange).setOnClickListener(this);
+        mHeaderView.findViewById(R.id.recharge).setOnClickListener(this);
 
-        Banner banner = (Banner) headerView.findViewById(R.id.banner);
+        Banner banner = (Banner) mHeaderView.findViewById(R.id.banner);
         List<String> paths = new ArrayList();
         for (HomeModel.slidesModel model : slides){
             paths.add(model.img);
@@ -203,7 +207,7 @@ public class HomeFrament extends MainFragment  implements View.OnClickListener{
         banner.setImages(paths);
         banner.start();
 
-        mRecycerViewAdapter.addHeaderView(headerView);
+        mRecycerViewAdapter.addHeaderView(mHeaderView);
 
 
 
