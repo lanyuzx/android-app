@@ -93,7 +93,7 @@ public class HomeFrament extends MainFragment  implements View.OnClickListener{
                 setupDetailItemClick();
                 mRefreshLayout.finishRefresh();
                 mRecyclerView.scrollBy(0, -(295*4));
-                
+
             }
             @Override
             public void onResponseError(Throwable error) {

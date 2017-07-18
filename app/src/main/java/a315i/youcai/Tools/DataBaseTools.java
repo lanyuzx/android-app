@@ -5,12 +5,6 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-
-import org.xutils.DbManager;
-import org.xutils.db.table.TableEntity;
-import org.xutils.ex.DbException;
-import org.xutils.x;
-
 import java.util.ArrayList;
 import java.util.List;
 
