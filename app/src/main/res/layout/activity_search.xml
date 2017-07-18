@@ -45,6 +45,16 @@
             android:background="@null"
             android:id="@+id/search_Et"
             />
+        <ImageView
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:src="@drawable/icon_x"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="5dp"
+            android:id="@+id/search_delete"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="12dp"
+            />
     </RelativeLayout>
         <ImageView
             android:layout_width="20dp"

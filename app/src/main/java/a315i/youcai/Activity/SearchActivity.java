@@ -10,6 +10,7 @@ import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
@@ -28,6 +29,7 @@ import java.util.Set;
 import a315i.youcai.Adapter.SearchAdapter;
 import a315i.youcai.Model.Home.HomeModel;
 import a315i.youcai.R;
+import a315i.youcai.Tools.DataBaseTools;
 import a315i.youcai.Tools.GsonTools;
 import a315i.youcai.Tools.LogTools;
 import a315i.youcai.Tools.NetWorkTools;
@@ -39,9 +41,12 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
     private boolean mIsChanged;
     private List<HomeModel.HomeChildModel> modelList;
     private SearchAdapter mSearchAdapter;
-    private GridLayoutManager mGridLayoutManager;
     private Set mSet;
     private FrameLayout mFrameLayout;
+    private LinearLayoutManager mLinearLayoutManager;
+    private GridLayoutManager mGridLayoutManager;
+    private ProductActivity.SpacesItemDecoration mSpacesItemDecoration;
+    private View mHistoryView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +55,10 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
         findViewById(R.id.search_Iv).setOnClickListener(this);
         findViewById(R.id.search_backIv).setOnClickListener(this);
         findViewById(R.id.search_changeLayout).setOnClickListener(this);
+        findViewById(R.id.search_delete).setOnClickListener(this);
+        mLinearLayoutManager = new LinearLayoutManager(getApplicationContext());
+        mGridLayoutManager = new GridLayoutManager(getApplicationContext(),2);
+        mSpacesItemDecoration = new ProductActivity.SpacesItemDecoration(20);
         mSet = new HashSet();
         mRecyclerView = (RecyclerView) findViewById(R.id.search_Rv);
         mEditText = (EditText) findViewById(R.id.search_Et);
@@ -109,9 +118,9 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
 
     private void setupHistoryView(){
 
-        View historyView = View.inflate(getApplicationContext(),R.layout.history_serach,null);
-        LinearLayout linearLayout = (LinearLayout) historyView.findViewById(R.id.history_search_container);
-        mFrameLayout.addView(historyView);
+        mHistoryView = View.inflate(getApplicationContext(),R.layout.history_serach,null);
+        LinearLayout linearLayout = (LinearLayout) mHistoryView.findViewById(R.id.history_search_container);
+        mFrameLayout.addView(mHistoryView);
         SharedPreferences sharedPreferences = getSharedPreferences("historySearch",MODE_PRIVATE);
         if (sharedPreferences != null){
             Set set = sharedPreferences.getStringSet("historyKey",new HashSet<String>());
@@ -127,6 +136,8 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
 
                     for (int i = 0;i<historyStrs.size();i++){
                         View view = View.inflate(getApplicationContext(),R.layout.moreinfo_item,null);
+                        view.setId(i);
+                        view.setOnClickListener(this);
                         linearLayout.addView(view);
                         TextView textView = (TextView) view.findViewById(R.id.moreinfo_item_title);
                         textView.setText(historyStrs.get(i));
@@ -157,11 +168,18 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
                   LogTools.e(response);
                  HomeModel homeModel = GsonTools.parseJsonWithGson(response,HomeModel.class);
                   modelList = homeModel.items;
-                  mRecyclerView.setLayoutManager(new GridLayoutManager(getApplicationContext(),2));
+                  List<HomeModel.HomeChildModel> saveList = DataBaseTools.getInstance(getApplicationContext()).findAll();
+                  for (HomeModel.HomeChildModel saveModel :saveList){
+                      for (HomeModel.HomeChildModel model:modelList){
+                          if (saveModel.id == model.id){
+                              model.buyCout = saveModel.buyCout;
+                          }
+                      }
+                  }
+                  mRecyclerView.setLayoutManager(mGridLayoutManager);
+                  mRecyclerView.addItemDecoration(mSpacesItemDecoration);
                   mSearchAdapter = new SearchAdapter(modelList,getApplicationContext());
                   mRecyclerView.setAdapter(mSearchAdapter);
-
-
               }
 
               @Override
@@ -178,12 +196,11 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
           modelList.get(i).layoutType = (mIsChanged ? 0 : 1);
       }
       if (mIsChanged) {
-          mGridLayoutManager = new GridLayoutManager(getApplicationContext(), 2);
           mRecyclerView.setLayoutManager(mGridLayoutManager);
-          mRecyclerView.addItemDecoration(new ProductActivity.SpacesItemDecoration(20));
+          mRecyclerView.addItemDecoration(mSpacesItemDecoration);
       } else {
-
-          mRecyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+          mRecyclerView.removeItemDecoration(mSpacesItemDecoration);
+          mRecyclerView.setLayoutManager(mLinearLayoutManager);
       }
       mSearchAdapter.notifyDataSetChanged();
       mIsChanged = !mIsChanged;
@@ -202,7 +219,35 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
             case R.id.search_changeLayout:
                 setupChangeLayout();
                 break;
+            case R.id.search_delete:
+                mFrameLayout.setVisibility(View.VISIBLE);
+                mRecyclerView.setVisibility(View.GONE);
+                InputMethodManager manager = (InputMethodManager) getSystemService(getApplicationContext().INPUT_METHOD_SERVICE);
+                manager.toggleSoftInput(0,InputMethodManager.HIDE_NOT_ALWAYS);
+                break;
         }
+
+        SharedPreferences sharedPreferences = getSharedPreferences("historySearch",MODE_PRIVATE);
+            Set set = sharedPreferences.getStringSet("historyKey",new HashSet<String>());
+            if (!set.isEmpty()) {
+                List<String> historyStrs = new ArrayList<>();
+                Iterator iterator = set.iterator();
+                while (iterator.hasNext()) {
+                    String saveStr = (String) iterator.next();
+                    historyStrs.add(saveStr);
+                }
+
+                for (int i = 0 ;i< historyStrs.size();i++){
+                    if (i == v.getId()){
+                       mEditText.setText(historyStrs.get(i));
+                        setupData(historyStrs.get(i));
+                        InputMethodManager imm = (InputMethodManager)getSystemService(getApplicationContext().INPUT_METHOD_SERVICE);
+                        imm.hideSoftInputFromWindow(mEditText.getWindowToken(),0);
+                    }
+
+                }
+            }
+
 
     }
 }
